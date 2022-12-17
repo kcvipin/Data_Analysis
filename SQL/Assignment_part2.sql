@@ -1,0 +1,59 @@
+use assignment;
+
+-- 1.
+select * from employee where salary>3000 and deptno=10;
+
+-- 2.
+-- a).
+select count(marks) from students where marks between 50 and 80;
+-- b). 
+select count(marks) from students where marks > 80;
+
+
+-- 3.
+select name from city
+where id%2=0;
+
+-- 4.
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;
+
+-- 5. a).
+SELECT DISTINCT (CITY) FROM STATION WHERE REGEXP_LIKE (CITY,'^[aeiou]') ORDER BY CITY;
+-- b). 
+SELECT DISTINCT (CITY) FROM STATION WHERE CITY REGEXP '^[aeiouAEIOU].*[aeiouAEIOU]$' ORDER BY CITY;
+-- c).
+SELECT DISTINCT(CITY) FROM STATION WHERE NOT REGEXP_LIKE (CITY,'^[aeiou]') ORDER BY CITY;
+-- d).
+SELECT DISTINCT (CITY) FROM STATION WHERE NOT CITY REGEXP '^[aeiouAEIOU].*[aeiouAEIOU]$' ORDER BY CITY;
+
+-- 6.
+SELECT * FROM EMP;
+SELECT * FROM EMP 
+WHERE SALARY > 2000 AND HIRE_DATE > date_SUB(CURRENT_DATE,INTERVAL 36 MONTH) ORDER BY SALARY DESC; 
+
+-- 7.
+SELECT * FROM employee;
+
+SELECT DEPTNO,SUM(SALARY) FROM EMPLOYEE GROUP BY DEPTNO;
+
+-- 8.
+SELECT COUNT(NAME) FROM CITY WHERE POPULATION > 100000;
+
+-- 9.
+SELECT SUM(POPULATION) FROM CITY WHERE DISTRICT='CALIFORNIA';
+
+-- 10.
+SELECT DISTRICT,AVG(POPULATION) FROM CITY GROUP BY DISTRICT;
+
+-- 11.
+SELECT * FROM ORDERS;
+SELECT * FROM customers;
+
+SELECT ordernumber, status, customernumber, customername, comments FROM ORDERS
+JOIN
+CUSTOMERS 
+USING(CUSTOMERNUMBER) WHERE STATUS = 'DISPUTED';
+
+
+
+
